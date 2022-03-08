@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const commentQueries = require("../queries/commentQueries");
 
 // comments entry point
 router.get("/", (req, res, next) =>
