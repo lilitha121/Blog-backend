@@ -13,7 +13,7 @@ db.once("open", () => console.log("Connected to Database"));
 
 app.use(express.json());
 app.use(cors());
-const blogsRouter = require("./routes/blogs");
+const blogsRouter = require("./routes");
 app.use("/blogs", blogsRouter);
 
 app.listen(process.env.PORT || 3000, () => console.log("Server Started"));
