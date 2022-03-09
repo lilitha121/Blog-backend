@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 const app = express();
@@ -13,7 +13,7 @@ db.once("open", () => console.log("Connected to Database"));
 
 app.use(express.json());
 app.use(cors());
-const blogsRouter = require("./routes");
+const blogsRouter = require("./routes/blogs");
 app.use("/blogs", blogsRouter);
 
 app.listen(process.env.PORT || 3000, () => console.log("Server Started"));
