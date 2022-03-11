@@ -1,57 +1,74 @@
 const express = require("express");
+const comments = require("../models/comments");
 const router = express.Router();
+const commentModels = require("../models/comments");
 
 
 // comments entry point
-router.get("/", (req, res, next) =>
-  commentQueries
-    .getAllComments()
-    .then((comments) => res.send(comments))
-    .catch((e) => res.status(400).send({ error: "Could not fetch comments" }))
-);
+router.get("/", async (req, res) => {
+  try {
+    const comments = await commentModels.find();
+    res.json(comments);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 // Get ALL comments for current blog post
-router.get("/:blog_id", (req, res) =>
-  commentQueries
-    .getAllCommentsForBlog(req.params.blog_id)
-    .then((comments) => res.send(comments))
-    .catch((e) => res.status(400).send({ error: "Could not fetch comments" }))
-);
+router.get("/:id", getComments, (req, res) => {
+  res.send(req.comments);
+});
 
 // Add comment for current blog post
-router.post("/:blog_id", (req, res, next) => {
-  const { comment_author, comment_text } = req.body;
-  if (!comment_author || !comment_text)
-    res
-      .status(400)
-      .send({ error: "Not all data submitted. Failed to comment on blog" });
-
-  commentQueries
-    .createComment(req.params.blog_id, comment_author, comment_text)
-    .then((msg) => commentQueries.getAllCommentsForBlog(req.params.blog_id))
-    .then((comments) => res.send(comments))
-    .catch((e) =>
-      res.status(400).send({ error: "Could not create comment. Query failure" })
-    );
+router.post("/", async (req, res) => {
+  const comments = new commentModels({
+    message: req.body.message,
+    
+  });
+  try {
+    const newComment = await comments.save();
+    res.status(201).json(newComment);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 // Update comment on current blog
-router.put("/:blog_id/:comment_id", (req, res, next) => {
-  const { comment_text } = req.body;
-  commentQueries
-    .updateComment(req.params.comment_id, comment_text)
-    .then((msg) => getAllCommentsForBlog(req.params.blog_id))
-    .then((comments) => res.send(comments))
-    .catch((e) => res.status(400).send({ error: "Could not update comment" }));
+router.patch("/:id", getComments, async (req, res) => {
+  if (req.body.message != null) {
+    res.comments.message = req.body.message;
+  }
+  try {
+    const updatedComments = await res.comments.save();
+    res.json(updatedComments);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 // Delete Comment
-router.delete("/:blog_id/:comment_id", (req, res, next) => {
-  commentQueries
-    .deleteComment(req.params.comment_id)
-    .then((msg) => commentQueries.getAllCommentsForBlog(req.params.blog_id))
-    .then((comments) => res.send(comments))
-    .catch((e) => res.status(400).send({ error: "Could not delete comment" }));
+router.delete("/:id", getComments, async (req, res) => {
+  try {
+    await res.comments.remove();
+    res.json({ message: "Comments Deleted" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
+
+async function getComments(req, res, next) {
+  let comments;
+  try {
+    comments = await commentModels.findById(req.params.id);
+    if (comments == null) {
+      return res.status(404).json({ message: "Cannot find comment" });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+
+  res.comments = comments;
+  next();
+}
 
 module.exports = router;

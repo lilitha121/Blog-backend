@@ -16,4 +16,10 @@ app.use(cors());
 const blogsRouter = require("./routes/blogs");
 app.use("/blogs", blogsRouter);
 
+const userRouter = require("./routes/userRouter");
+app.use("/user", userRouter);
+
+const commentRouter = require("./routes/commentRouter");
+app.use("/comments", commentRouter);
+
 app.listen(process.env.PORT || 3000, () => console.log("Server Started"));

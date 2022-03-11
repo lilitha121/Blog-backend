@@ -1,0 +1,83 @@
+GET http://localhost:3000/comments
+Content-Type: application/json
+
+{
+"message": "gsdha hdbhd "
+}
+###
+
+
+###
+
+POST http://localhost:3000/comments 
+Content-Type: application/json 
+
+{
+    "message": "jdkjs jjdckj jkdsj"
+}
+
+###
+
+PATCH http://localhost:3000/comments/622b01373aafd3e4a89a24a7
+Content-Type: application/json
+
+{
+"message": "thank you Lord"
+}
+
+###
+
+DELETE http://localhost:3700/movies ###
+
+# movies end
+
+GET http://localhost:3700/user/621f24856fe0ed8ffceed8a8
+
+###
+
+POST http://localhost:3000/user/signin 
+Content-Type: application/json
+
+{
+"fullname": "phone", "password": "case"
+}
+
+###
+
+POST http://localhost:3000/user/signup 
+Content-Type: application/json
+
+{
+
+"fullname": "phone", "password": "case", "email": "iphone@gmail.com", "phone_number": "0259253477"
+}
+
+###
+
+PATCH http://localhost:3000/user 
+Content-Type: application/json
+
+{
+
+}
+
+###
+
+DELETE http://localhost:3000/user
+
+# users end
+
+###
+
+GET http://localhost:3000/cart 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMWYyYTVmYTQ4MGI1MjA2NDc5ZDBkOCIsImlhdCI6MTY0NjIyMjU3NiwiZXhwIjoxNjQ2MzA4OTc2fQ.9WQPgfnOOlWloVellvfEKwrk57RHNAXGwuZuzJ2brlU
+
+###
+
+POST http://localhost:3000/cart/621629723d5c4a0acde78b18 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMWYyYTVmYTQ4MGI1MjA2NDc5ZDBkOCIsImlhdCI6MTY0NjIyMjU3NiwiZXhwIjoxNjQ2MzA4OTc2fQ.9WQPgfnOOlWloVellvfEKwrk57RHNAXGwuZuzJ2brlU ###
+
+DELETE http://localhost:3000/cart/621629723d5c4a0acde78b18 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMWYyYTVmYTQ4MGI1MjA2NDc5ZDBkOCIsImlhdCI6MTY0NjIyMjU3NiwiZXhwIjoxNjQ2MzA4OTc2fQ.9WQPgfnOOlWloVellvfEKwrk57RHNAXGwuZuzJ2brlU
+
+###
