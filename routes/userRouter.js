@@ -21,7 +21,7 @@ router.get("/:id", getUser, (req, res) => {
 });
 
 // Register Users
-router.post("/signup", DuplicatedUsernameorEmail, async (req, res, next) => {
+router.post("/signup", DuplicatedUsernameorEmail, async (req, res, ) => {
   try {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(req.body.password, salt);

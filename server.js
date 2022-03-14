@@ -22,4 +22,6 @@ app.use("/user", userRouter);
 const commentRouter = require("./routes/commentRouter");
 app.use("/comments", commentRouter);
 
+const contactRouter = require("./routes/contactRouter");
+app.use("/contacts", contactRouter);
 app.listen(process.env.PORT || 3000, () => console.log("Server Started"));

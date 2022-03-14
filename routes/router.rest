@@ -5,7 +5,15 @@ Content-Type: application/json
 "message": "gsdha hdbhd "
 }
 ###
+POST http://localhost:3000/contacts
+Content-Type: application/json
 
+{
+"name": "lilly",
+"email": "lilly@gmail.com",
+"contact": "0842501200",
+"message": "i Love you Lord"
+}
 
 ###
 
@@ -39,7 +47,8 @@ POST http://localhost:3000/user/signin
 Content-Type: application/json
 
 {
-"fullname": "phone", "password": "case"
+"fullname": "phone", 
+"password": "case"
 }
 
 ###
@@ -49,7 +58,10 @@ Content-Type: application/json
 
 {
 
-"fullname": "phone", "password": "case", "email": "iphone@gmail.com", "phone_number": "0259253477"
+"fullname": "phone", 
+"password": "case", 
+"email": "iphone@gmail.com", 
+"phone_number": "0259253477"
 }
 
 ###
@@ -63,7 +75,10 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/user
+DELETE http://localhost:3000/localhost:3000/comments/622b01373aafd3e4a89a24a7
+Content-Type: application/json
+
+
 
 # users end
 

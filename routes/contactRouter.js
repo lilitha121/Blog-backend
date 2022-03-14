@@ -2,22 +2,22 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 require("dotenv").config;
 
-const app = express.Router();
+const router = express.Router();
 
-app.get("/", (req, res) =>
+router.get("/", (req, res) =>
   res.send({
     msg: "Please use a POST request to send an email",
     email_template: {
-      name: "John Doe",
-      email: "johndoe@gmail.com",
+      name: "Lilitha Ngele",
+      email: "ngelelilitha18@gmail.com",
       contact: "0123456789",
       message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos blanditiis culpa quae modi accusamus quis nesciunt ea facere suscipit aut, aliquid, aliquam voluptatum. Optio ratione excepturi libero, quia itaque quis.",
+        "I love you Jesus",
     },
   })
 );
 
-app.post("/", (req, res) => {
+router.post("/", (req, res) => {
   let { name, email, contact, message } = req.body;
 
   const transporter = nodemailer.createTransport({
@@ -34,7 +34,7 @@ app.post("/", (req, res) => {
   const mailOptions = {
     from: email,
     to: process.env.USER,
-    subject: "New message from Generic Blog API",
+    subject: "New message from Lilitha's blog",
     html: `
 <h1>${name} is interested in your stories.</h1>
 <p>Contact them on:</p>
@@ -60,4 +60,4 @@ app.post("/", (req, res) => {
   });
 });
 
-module.exports = app;
+module.exports = router;
