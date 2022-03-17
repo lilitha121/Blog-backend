@@ -7,11 +7,12 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.send({ msg: "getting contacts" });
 });
- 
+
 router.post("/", (req, res) => {
   const { email, name, subject, message } = req.body;
   console.log(process.env.EMAIL, process.env.PASS);
   console.log(email, name, subject, message);
+  console.log(req.body);
   let transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
