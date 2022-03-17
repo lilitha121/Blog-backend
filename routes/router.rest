@@ -5,14 +5,14 @@ Content-Type: application/json
 "message": "gsdha hdbhd "
 }
 ###
-POST http://localhost:3000/contacts
+POST http://localhost:3000/blogs
 Content-Type: application/json
 
 {
-"name": "lilly",
-"email": "lilly@gmail.com",
-"contact": "0842501200",
-"message": "i Love you Lord"
+"title": "lashes",
+"content": "lashes are...",
+"price": "25.50",
+"img": "i Love you Lord"
 }
 
 ###
@@ -53,6 +53,18 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:3000/boo
+Content-Type: application/json
+
+{
+
+"fullname": "phone", 
+"password": "case", 
+"email": "iphone@gmail.com", 
+"phone_number": "0259253477"
+}
+
+###
 POST http://localhost:3000/user/signup 
 Content-Type: application/json
 
