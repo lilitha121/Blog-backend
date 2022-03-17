@@ -2,7 +2,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-const app = express.Router();
+const router = express.Router();
 
 router.get("/", (req, res) => {
   res.send({ msg: "getting contacts" });
