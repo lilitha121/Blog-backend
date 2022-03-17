@@ -2,13 +2,13 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-const app = express.Router();
+const router = express.Router();
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.send({ msg: "getting contacts" });
 });
  
-app.post("/", (req, res) => {
+router.post("/", (req, res) => {
   const { email, name, subject, message } = req.body;
   console.log(process.env.EMAIL, process.env.PASS);
   let transporter = nodemailer.createTransport({
