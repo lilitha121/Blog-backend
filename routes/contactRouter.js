@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const { email, name, subject, message } = req.body;
   console.log(process.env.EMAIL, process.env.PASS);
+  console.log(email, name, subject, message);
   let transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
