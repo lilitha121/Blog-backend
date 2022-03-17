@@ -1,57 +1,40 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
-require("dotenv").config;
+require("dotenv").config();
 
-const router = express.Router();
+const app = express.Router();
 
-router.get("/", (req, res) =>
-  res.send({
-    msg: "Please use a POST request to send an email",
-    email_template: {
-      name: "Lilitha Ngele",
-      email: "ngelelilitha18@gmail.com",
-      contact: "0123456789",
-      message:
-        "I love you Jesus",
-    },
-  })
-);
+router.get("/", (req, res) => {
+  res.send({ msg: "getting contacts" });
+});
 
 router.post("/", (req, res) => {
-  let { name, email, contact, message } = req.body;
-
-  const transporter = nodemailer.createTransport({
+  const { email, name, subject, message } = req.body;
+  console.log(process.env.EMAIL, process.env.PASS);
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
       user: process.env.EMAIL,
-      pass: process.env.PASSWORD,
+      pass: process.env.PASS,
     },
   });
 
   const mailOptions = {
     from: email,
-    to: process.env.EMAIL,
-    subject: "New message from Lilitha's blog",
-    html: `
-<h1>${name} is interested in your stories.</h1>
-<p>Contact them on:</p>
-<ul>
-    <li><a href='tel:${contact}'>${contact}</a></li>
-    <li><a href='mailto:${email}'>${email}</a></li>
-</ul> 
-<p>${message}</p>`,
+    to: "ngelelilitha18@gmail.com",
+    subject: `${subject}`,
+    text: `${name} has contacted you
+  
+  ${message} `,
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
-      res.status(400).send({
-        msg: `Email not sent
-      
-      ${error}  `,
-      });
+      res.status(400).send({ msg: "Email has been sent" });
     } else {
       console.log("Email sent: " + info.response);
       res.send({ msg: "Email has been sent successfully" });
