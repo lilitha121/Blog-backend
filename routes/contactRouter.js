@@ -26,14 +26,14 @@ router.post("/", (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.user,
-      pass: process.env.pass,
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD,
     },
   });
 
   const mailOptions = {
     from: email,
-    to: process.env.user,
+    to: process.env.EMAIL,
     subject: "New message from Lilitha's blog",
     html: `
 <h1>${name} is interested in your stories.</h1>
