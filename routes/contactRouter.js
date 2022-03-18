@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       
-      res.status(400).send({ msg: "Email has been sent" });
+      res.status(400).send({ msg: "Email has not been sent" });
     console.log(error);
     } else {
       console.log("Email sent: " + info.response);

@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cart: {
+  singleBlog: {
     type: Array,
     required: false,
     default: [],
