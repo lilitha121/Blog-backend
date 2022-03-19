@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
 // Get single user
 router.get("/:id", getUser, (req, res) => {
-  res.json(res.users);
+  res.json(res.user);
 });
 
 // Register Users
@@ -31,7 +31,7 @@ router.post("/signup", DuplicatedUsernameorEmail, async (req, res, ) => {
       password: hashedPassword,
       phone_number: req.body.phone_number,
     });
-    const newUser = await users.save();
+    const newUser = await user.save();
     res.status(201).json(newUser);
     // console.log(salt)
     // console.log(hashedPassword)
