@@ -1,11 +1,21 @@
-GET http://localhost:3000/comments
+DELETE https://blogs-lilly.herokuapp.com/blogs/6239844497ff9c6c678763f2
 Content-Type: application/json
 
 {
 "message": "gsdha hdbhd "
 }
 ###
-POST http://localhost:3000/blogs
+
+GET  https://blogs-lilly.herokuapp.com/blogs/
+Content-Type: application/json
+
+{
+"message": "gsdha hdbhd "
+}
+
+###
+
+POST http://localhost:3000/blogs/
 Content-Type: application/json
 
 {
@@ -40,6 +50,8 @@ DELETE http://localhost:3700/movies ###
 # movies end
 
 GET http://localhost:3700/user/621f24856fe0ed8ffceed8a8
+Content-Type: application/json
+
 
 ###
 
