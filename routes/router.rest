@@ -1,13 +1,14 @@
-POST  https://blogs-lilly.herokuapp.com/user/signin
+PATCH  https://blogs-lilly.herokuapp.com/blogs/623b09867139acdf8057c688
 Content-Type: application/json
 
 {
-     "fullname": "Lindo",
-    "password": "123456789"
+"title": "DIY eyelashes",
+    "price": 30,
+    "content": "ddggfofoofd",
 }
 ###
 
-GET  https://blogs-lilly.herokuapp.com/user
+GET  https://blogs-lilly.herokuapp.com/blogs/
 Content-Type: application/json
 
 {
@@ -76,8 +77,9 @@ Content-Type: application/json
 "email": "iphone@gmail.com", 
 "phone_number": "0259253477"
 }
+
 ###
-POST http://localhost:3000/boo
+POST http://localhost:3000/user/signup 
 Content-Type: application/json
 
 {
@@ -86,17 +88,6 @@ Content-Type: application/json
 "password": "case", 
 "email": "iphone@gmail.com", 
 "phone_number": "0259253477"
-}
-###
-POST https://blogs-lilly.herokuapp.com/user/signup 
-Content-Type: application/json
-
-{
-
-"fullname": "Lindo", 
-"password": "123456789", 
-"email": "lindo@gmail.com", 
-"phone_number": "025925356477"
 }
 
 ###

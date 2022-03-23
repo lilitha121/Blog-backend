@@ -48,7 +48,7 @@ router.patch("/:id", getBlogs, async (req, res) => {
     res.blogs.img = req.body.img;
   }
   try {
-    const updatedBlog = await res.blogs.update();
+    const updatedBlog = await res.blogs.save();
     res.json(updatedBlog);
   } catch (err) {
     res.status(400).json({ message: err.message });
