@@ -1,12 +1,13 @@
-DELETE https://blogs-lilly.herokuapp.com/blogs/6239844497ff9c6c678763f2
+POST  https://blogs-lilly.herokuapp.com/user/signin
 Content-Type: application/json
 
 {
-"message": "gsdha hdbhd "
+     "fullname": "Lindo",
+    "password": "123456789"
 }
 ###
 
-GET  https://blogs-lilly.herokuapp.com/blogs/
+GET  https://blogs-lilly.herokuapp.com/user
 Content-Type: application/json
 
 {
@@ -75,9 +76,8 @@ Content-Type: application/json
 "email": "iphone@gmail.com", 
 "phone_number": "0259253477"
 }
-
 ###
-POST http://localhost:3000/user/signup 
+POST http://localhost:3000/boo
 Content-Type: application/json
 
 {
@@ -86,6 +86,17 @@ Content-Type: application/json
 "password": "case", 
 "email": "iphone@gmail.com", 
 "phone_number": "0259253477"
+}
+###
+POST https://blogs-lilly.herokuapp.com/user/signup 
+Content-Type: application/json
+
+{
+
+"fullname": "Lindo", 
+"password": "123456789", 
+"email": "lindo@gmail.com", 
+"phone_number": "025925356477"
 }
 
 ###
